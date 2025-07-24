@@ -19,7 +19,8 @@
       "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/KR_logo.png",
+      "assets/KumbhRakshak.png"
     ],
     "ios": {
       "supportsTablet": true
@@ -28,6 +29,21 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/KumbhRakshak.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.endrdevs.kumbhrakshak",
+      "enableAapt2": true,
+      "enableProguardInReleaseBuilds": true,
+      "enableSeparateBuildPerCPUArchitecture": true,
+      "splits": {
+        "abi": {
+          "enable": true,
+          "reset": true,
+          "include": ["arm64-v8a", "armeabi-v7a"]
+        },
+        "density": {
+          "enable": true,
+          "include": ["mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"]
+        }
       }
     },
     "extra": {
