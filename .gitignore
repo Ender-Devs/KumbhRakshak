@@ -23,9 +23,10 @@ firebase-config.js
 config/firebase-private.js
 
 # Documentation (to reduce app size)
-*.md
+./*.md
 OPTIMIZATION_SUMMARY.md
-
+AI_ASSISTANT_INSTRUCTIONS.md
+/.github
 ios
 android
 
