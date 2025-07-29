@@ -14,7 +14,7 @@ import { UserStorage } from '../../utils/UserStorage';
 import '../../global.css';
 
 export default function SettingsScreen() {
-  const { i18n, t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [locationEnabled, setLocationEnabled] = useState(true);
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
@@ -26,33 +26,33 @@ export default function SettingsScreen() {
 
   const handleLogout = () => {
     Alert.alert(
-      t('settings.logout') || 'Logout',
-      t('settings.logoutConfirm') || 'Are you sure you want to logout?',
+      'Logout',
+      'Are you sure you want to logout?',
       [
-        { text: t('common.cancel') || 'Cancel', style: 'cancel' },
+        { text: 'Cancel', style: 'cancel' },
         {
-          text: t('settings.logout') || 'Logout',
+          text: 'Logout',
           style: 'destructive',
           onPress: async () => {
             await UserStorage.clearAllData();
-            Alert.alert(t('common.success') || 'Success', t('settings.logoutSuccess') || 'Logged out successfully. Please restart the app.');
+            Alert.alert('Success', 'Logged out successfully. Please restart the app.');
           },
         },
       ]
     );
   };
 
-  const SettingItem = ({ icon, title, subtitle, rightComponent, onPress, iconColor = '#FF6B35', textColor = '#1F2937' }) => (
+  const SettingItem = ({ icon, title, subtitle, rightComponent, onPress, iconColor = '#6B7280' }) => (
     <TouchableOpacity
       onPress={onPress}
-      className="bg-white rounded-2xl p-4 mb-3 shadow-lg border border-gray-100 active:bg-orange-50"
-      activeOpacity={0.8}>
+      className="bg-white rounded-2xl p-4 mb-3 shadow-sm active:bg-gray-50"
+      activeOpacity={0.7}>
       <View className="flex-row items-center">
-        <View className="w-12 h-12 bg-orange-100 rounded-full items-center justify-center mr-4">
+        <View className="w-12 h-12 bg-gray-100 rounded-full items-center justify-center mr-4">
           <FontAwesome6 name={icon} size={18} color={iconColor} />
         </View>
         <View className="flex-1">
-          <Text className="font-semibold text-base" style={{color: textColor}}>{title}</Text>
+          <Text className="text-gray-900 font-semibold text-base">{title}</Text>
           {subtitle && (
             <Text className="text-gray-500 text-sm mt-1">{subtitle}</Text>
           )}
@@ -63,7 +63,7 @@ export default function SettingsScreen() {
   );
 
   const SectionHeader = ({ title }) => (
-    <Text className="font-bold text-lg mb-4 px-2" style={{color: '#FF6B35'}}>{title}</Text>
+    <Text className="text-gray-800 font-bold text-lg mb-4 px-2">{title}</Text>
   );
 
   return (
@@ -71,9 +71,9 @@ export default function SettingsScreen() {
       <StatusBar barStyle="dark-content" backgroundColor="#F9FAFB" />
       
       {/* Header */}
-      <View className="bg-gradient-to-r from-orange-500 to-red-500 px-6 pt-12 pb-6 shadow-lg">
-        <Text className="text-2xl font-bold text-white">{t('settings.title') || 'Settings'}</Text>
-        <Text className="text-orange-100 mt-1">{t('settings.subtitle') || 'Customize your app experience'}</Text>
+      <View className="bg-white px-6 pt-12 pb-6 shadow-sm">
+        <Text className="text-2xl font-bold text-gray-900">Settings</Text>
+        <Text className="text-gray-600 mt-1">Customize your app experience</Text>
       </View>
 
       <ScrollView className="flex-1 px-6 py-6" showsVerticalScrollIndicator={false}>

@@ -12,7 +12,13 @@ export default function UserTypeModal({ visible, onSelectUserType }) {
     if (visible) {
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 400,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 200,
         useNativeDriver: true,
       }).start();
     }
@@ -21,7 +27,7 @@ export default function UserTypeModal({ visible, onSelectUserType }) {
   const handleUserTypeSelect = (type) => {
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 300,
+      duration: 200,
       useNativeDriver: true,
     }).start(() => {
       onSelectUserType(type);
@@ -29,104 +35,84 @@ export default function UserTypeModal({ visible, onSelectUserType }) {
   };
 
   return (
-    <Modal animationType="fade" transparent={true} visible={visible}>
-      <View className="flex-1 bg-black/70">
-        <Animated.View style={{ opacity: fadeAnim }} className="flex-1 justify-center px-6">
-          <View className="overflow-hidden rounded-3xl bg-white shadow-strong">
-            {/* Header */}
-            <View className="bg-gradient-to-r from-kumbhblue-600 to-kumbhblue-700 px-6 py-8">
-              <View className="items-center">
-                <View className="mb-4 h-20 w-20 items-center justify-center rounded-full bg-white/20">
-                  <FontAwesome6 name="users" size={32} color="white" />
-                </View>
-                <Text className="text-center text-3xl font-bold text-white">
-                  {t('userType.welcome')}
-                </Text>
-                <Text className="mt-2 text-center text-lg text-white/90">
-                  {t('userType.subtitle')}
-                </Text>
-              </View>
+    <Modal
+      visible={visible}
+      transparent={true}
+      animationType="none"
+      statusBarTranslucent={true}>
+      <Animated.View 
+        style={{ opacity: fadeAnim }}
+        className="flex-1 bg-black/60 justify-center items-center px-6">
+        <View className="bg-white rounded-3xl p-8 w-full max-w-sm shadow-2xl border border-orange-100">
+          {/* Header */}
+          <View className="items-center mb-8">
+            <View className="w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full items-center justify-center mb-4 shadow-lg">
+              <FontAwesome6 name="users" size={32} color="white" />
             </View>
+            <Text className="text-2xl font-bold text-gray-800 text-center mb-2">
+              {t('userType.title') || 'Choose Your Role'}
+            </Text>
+            <Text className="text-sm text-gray-600 text-center leading-5">
+              {t('userType.subtitle') || 'Select how you want to use Kumbh Rakshak'}
+            </Text>
+          </View>
 
-            {/* User Type Options */}
-            <View className="p-6">
-              {/* User Option */}
-              <TouchableOpacity
-                onPress={() => handleUserTypeSelect('user')}
-                className="mb-4 rounded-2xl border-2 border-kumbhblue-200 bg-gradient-to-r from-kumbhblue-50 to-kumbhblue-100 p-6 shadow-medium"
-                activeOpacity={0.8}>
-                <View className="flex-row items-center">
-                  <View className="h-16 w-16 items-center justify-center rounded-xl bg-kumbhblue-600">
-                    <FontAwesome6 name="user" size={24} color="white" />
-                  </View>
-
-                  <View className="ml-4 flex-1">
-                    <Text className="text-2xl font-bold text-gray-800">
-                      {t('userType.user.title')}
-                    </Text>
-                    <Text className="mt-1 text-base leading-relaxed text-gray-600">
-                      {t('userType.user.description')}
-                    </Text>
-                  </View>
-
-                  <FontAwesome6 name="chevron-right" size={20} color="#204B72" />
+          {/* User Type Options */}
+          <View className="space-y-4">
+            {/* General User Option */}
+            <TouchableOpacity
+              onPress={() => handleUserTypeSelect('user')}
+              className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-6 shadow-lg active:scale-95 border border-orange-200"
+              activeOpacity={0.8}>
+              <View className="flex-row items-center">
+                <View className="w-12 h-12 bg-white/30 rounded-xl items-center justify-center mr-4">
+                  <FontAwesome6 name="user" size={20} color="white" />
                 </View>
-
-                <View className="mt-4 border-t border-kumbhblue-200 pt-4">
-                  <View className="flex-row items-center">
-                    <FontAwesome6 name="check-circle" size={16} color="#10B981" />
-                    <Text className="ml-2 font-medium text-kumbhgreen-600">
-                      {t('userType.user.benefit')}
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-
-              {/* Volunteer Option */}
-              <TouchableOpacity
-                onPress={() => handleUserTypeSelect('volunteer')}
-                className="rounded-2xl border-2 border-kumbhgold-200 bg-gradient-to-r from-kumbhgold-50 to-kumbhgold-100 p-6 shadow-medium"
-                activeOpacity={0.8}>
-                <View className="flex-row items-center">
-                  <View className="h-16 w-16 items-center justify-center rounded-xl bg-kumbhgold-600">
-                    <FontAwesome6 name="hands-helping" size={24} color="white" />
-                  </View>
-
-                  <View className="ml-4 flex-1">
-                    <Text className="text-2xl font-bold text-gray-800">
-                      {t('userType.volunteer.title')}
-                    </Text>
-                    <Text className="mt-1 text-base leading-relaxed text-gray-600">
-                      {t('userType.volunteer.description')}
-                    </Text>
-                  </View>
-
-                  <FontAwesome6 name="chevron-right" size={20} color="#D97706" />
-                </View>
-
-                <View className="mt-4 border-t border-kumbhgold-200 pt-4">
-                  <View className="flex-row items-center">
-                    <FontAwesome6 name="shield-halved" size={16} color="#DC2626" />
-                    <Text className="ml-2 font-medium text-red-600">
-                      {t('userType.volunteer.requirement')}
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-
-              {/* Info Section */}
-              <View className="mt-4 rounded-xl bg-gray-50 p-4">
-                <View className="flex-row items-start">
-                  <FontAwesome6 name="info-circle" size={16} color="#6B7280" />
-                  <Text className="ml-3 flex-1 text-sm leading-relaxed text-gray-600">
-                    {t('userType.info')}
+                <View className="flex-1">
+                  <Text className="text-white text-lg font-bold mb-1">
+                    {t('userType.general_user') || 'General User'}
+                  </Text>
+                  <Text className="text-white/90 text-sm">
+                    {t('userType.general_user_desc') || 'Report issues and get emergency help'}
                   </Text>
                 </View>
+                <FontAwesome6 name="chevron-right" size={16} color="white" />
               </View>
+            </TouchableOpacity>
+
+            {/* Volunteer Option */}
+            <TouchableOpacity
+              onPress={() => handleUserTypeSelect('volunteer')}
+              className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-6 shadow-lg active:scale-95 border border-blue-200"
+              activeOpacity={0.8}>
+              <View className="flex-row items-center">
+                <View className="w-12 h-12 bg-white/30 rounded-xl items-center justify-center mr-4">
+                  <FontAwesome6 name="hand-holding-heart" size={20} color="white" />
+                </View>
+                <View className="flex-1">
+                  <Text className="text-white text-lg font-bold mb-1">
+                    {t('userType.volunteer') || 'Volunteer'}
+                  </Text>
+                  <Text className="text-white/90 text-sm">
+                    {t('userType.volunteer_desc') || 'Help manage and coordinate services'}
+                  </Text>
+                </View>
+                <FontAwesome6 name="chevron-right" size={16} color="white" />
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          {/* Info Note */}
+          <View className="mt-6 p-4 bg-orange-50 rounded-xl border border-orange-100">
+            <View className="flex-row items-start">
+              <FontAwesome6 name="info-circle" size={16} color="#FB923C" className="mt-0.5 mr-2" />
+              <Text className="text-xs text-orange-700 flex-1 leading-4">
+                {t('userType.info') || 'You can change your role anytime in settings. Volunteers need authorized credentials.'}
+              </Text>
             </View>
           </View>
-        </Animated.View>
-      </View>
+        </View>
+      </Animated.View>
     </Modal>
   );
 }

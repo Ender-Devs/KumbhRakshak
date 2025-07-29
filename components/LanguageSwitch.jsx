@@ -4,47 +4,55 @@ import { useTranslation } from 'react-i18next';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import '../global.css';
 
-export default function LanguageSwitch({ disabled = false }) {
-  const { t, i18n } = useTranslation();
+export default function LanguageSwitch({ disabled = false, style = 'default' }) {
+  const { i18n } = useTranslation();
 
   const toggleLanguage = () => {
-    if (disabled) return; // Don't change language when disabled
+    if (disabled) return;
+    const newLanguage = i18n.language === 'en' ? 'hi' : 'en';
+    i18n.changeLanguage(newLanguage);
+  };
 
-    const currentLang = i18n.language;
-    const newLang = currentLang === 'en' ? 'hi' : 'en';
-    i18n.changeLanguage(newLang);
+  const getStyleClasses = () => {
+    if (disabled) return 'bg-gray-300';
+    
+    switch (style) {
+      case 'header':
+        return 'bg-white/20 backdrop-blur-sm active:bg-white/30 border border-white/20';
+      case 'settings':
+        return 'bg-orange-100 active:bg-orange-200 border border-orange-200';
+      default:
+        return 'bg-white/20 backdrop-blur-sm active:bg-white/30';
+    }
+  };
+
+  const getTextColor = () => {
+    if (disabled) return 'text-gray-500';
+    return style === 'settings' ? 'text-orange-700' : 'text-white';
+  };
+
+  const getIconColor = () => {
+    if (disabled) return '#9CA3AF';
+    return style === 'settings' ? '#FB923C' : 'white';
   };
 
   return (
     <TouchableOpacity
       onPress={toggleLanguage}
       disabled={disabled}
-      className={`absolute right-6 top-14 overflow-hidden rounded-2xl ${
-        disabled ? 'bg-gray-500/30' : 'bg-white/20 backdrop-blur-sm'
-      }`}
+      className={`flex-row items-center px-4 py-2 rounded-full shadow-lg ${getStyleClasses()}`}
       activeOpacity={0.8}>
-      <View
-        className={`flex-row items-center border px-4 py-3 ${
-          disabled ? 'border-gray-400/30' : 'border-white/30'
-        }`}>
-        <View className={`mr-3 rounded-full p-2 ${disabled ? 'bg-gray-400/30' : 'bg-white/20'}`}>
-          <FontAwesome6 name="language" size={18} color={disabled ? '#9CA3AF' : 'white'} />
-        </View>
-
-        <View>
-          <Text className={`text-sm font-bold ${disabled ? 'text-gray-400' : 'text-white'}`}>
-            {t('language.switch')}
-          </Text>
-          <Text className={`text-xs ${disabled ? 'text-gray-500' : 'text-white/80'}`}>
-            {t('language.current')}
-          </Text>
-        </View>
-
-        {!disabled && (
-          <View className="ml-2">
-            <FontAwesome6 name="chevron-down" size={12} color="white" />
-          </View>
-        )}
+      <View className="flex-row items-center">
+        <FontAwesome6 
+          name="language" 
+          size={16} 
+          color={getIconColor()} 
+          style={{ marginRight: 8 }}
+        />
+        <Text 
+          className={`font-medium text-sm ${getTextColor()}`}>
+          {i18n.language === 'en' ? 'हिंदी' : 'English'}
+        </Text>
       </View>
     </TouchableOpacity>
   );
