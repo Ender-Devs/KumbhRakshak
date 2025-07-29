@@ -10,8 +10,21 @@ npm-debug.*
 *.orig.*
 web-build/
 
+# Environment variables and sensitive data
+.env
+.env.local
+.env.production
+.env.staging
+*.env
 
+# Firebase config files with sensitive data
+firebase-config.js
+config/firebase-private.js
 
+# Documentation (to reduce app size)
+docs/
+*.md
+OPTIMIZATION_SUMMARY.md
 
 ios
 android
