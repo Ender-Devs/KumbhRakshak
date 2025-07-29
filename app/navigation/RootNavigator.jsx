@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 
 export default function RootNavigator({ userType }) {
   return (
-    <Stack.Navigator 
+    <Stack.Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: userType === 'volunteer' ? '#D97706' : '#204B72',
@@ -20,20 +20,15 @@ export default function RootNavigator({ userType }) {
         },
         headerShadowVisible: true,
         animation: 'slide_from_right',
-      }}
-    >
+      }}>
       {userType === 'volunteer' ? (
-        <Stack.Screen 
-          name="Volunteer" 
+        <Stack.Screen
+          name="Volunteer"
           component={VolunteerScreen}
           options={{ headerShown: false }}
         />
       ) : (
-        <Stack.Screen 
-          name="Tabs" 
-          component={TabNavigator}
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name="Tabs" component={TabNavigator} options={{ headerShown: false }} />
       )}
     </Stack.Navigator>
   );

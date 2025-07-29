@@ -14,14 +14,15 @@ export default function TabNavigator() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === 'Home') iconName = focused ? 'house' : 'house';
-          else if (route.name === 'Emergency') iconName = focused ? 'truck-medical' : 'truck-medical';
+          else if (route.name === 'Emergency')
+            iconName = focused ? 'truck-medical' : 'truck-medical';
           else if (route.name === 'Profile') iconName = focused ? 'user' : 'user';
           else if (route.name === 'Settings') iconName = focused ? 'cog' : 'cog';
-          
+
           return (
-            <FontAwesome6 
-              name={iconName} 
-              size={focused ? size + 2 : size} 
+            <FontAwesome6
+              name={iconName}
+              size={focused ? size + 2 : size}
               color={color}
               style={{
                 marginTop: focused ? -2 : 0,
@@ -53,29 +54,29 @@ export default function TabNavigator() {
           paddingVertical: 5,
         },
       })}>
-      <Tab.Screen 
-        name="Home" 
-        component={HomeScreen} 
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
         options={{
           tabBarLabel: 'Home',
         }}
       />
-      <Tab.Screen 
-        name="Emergency" 
+      <Tab.Screen
+        name="Emergency"
         component={EmergencyScreen}
         options={{
           tabBarLabel: 'Emergency',
         }}
       />
-      <Tab.Screen 
-        name="Profile" 
+      <Tab.Screen
+        name="Profile"
         component={ProfileScreen}
         options={{
           tabBarLabel: 'Profile',
         }}
       />
-      <Tab.Screen 
-        name="Settings" 
+      <Tab.Screen
+        name="Settings"
         component={SettingsScreen}
         options={{
           tabBarLabel: 'Settings',

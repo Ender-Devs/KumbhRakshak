@@ -40,7 +40,7 @@ export const UserStorage = {
       const dataToSave = {
         ...userData,
         isRegistered: true,
-        registrationDate: new Date().toISOString()
+        registrationDate: new Date().toISOString(),
       };
       await AsyncStorage.setItem(USER_STORAGE_KEY, JSON.stringify(dataToSave));
       return true;
@@ -88,7 +88,7 @@ export const UserStorage = {
       const loginData = {
         ...volunteerData,
         isLoggedIn: true,
-        loginTime: new Date().toISOString()
+        loginTime: new Date().toISOString(),
       };
       await AsyncStorage.setItem(VOLUNTEER_LOGIN_KEY, JSON.stringify(loginData));
       return true;
@@ -150,7 +150,7 @@ export const UserStorage = {
   async sendToServer(userData) {
     // TODO: Implement server API call
     console.log('Sending user data to server:', userData);
-    
+
     // Placeholder for actual API call
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -158,5 +158,5 @@ export const UserStorage = {
         resolve({ success: true });
       }, 1000);
     });
-  }
+  },
 };

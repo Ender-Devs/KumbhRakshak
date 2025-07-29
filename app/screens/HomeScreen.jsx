@@ -24,15 +24,11 @@ export default function HomeScreen() {
   return (
     <View className="flex-1 bg-kumbhblue-50">
       {/* Header Section */}
-      <View className="bg-kumbhblue-600 pt-12 pb-6 px-6">
-        <View className="flex-row justify-between items-start mb-4">
+      <View className="bg-kumbhblue-600 px-6 pb-6 pt-12">
+        <View className="mb-4 flex-row items-start justify-between">
           <View className="flex-1">
-            <Text className="text-white text-2xl font-bold mb-1">
-              {t('welcome')}
-            </Text>
-            <Text className="text-kumbhblue-100 text-sm">
-              {t('tagline')}
-            </Text>
+            <Text className="mb-1 text-2xl font-bold text-white">{t('welcome')}</Text>
+            <Text className="text-sm text-kumbhblue-100">{t('tagline')}</Text>
           </View>
           <View className="mt-2">
             <LanguageSwitch />
@@ -40,10 +36,10 @@ export default function HomeScreen() {
         </View>
 
         {/* Logo Section */}
-        <View className="items-center mt-4">
-          <Image 
-            source={require('../../assets/KumbhRakshak.png')} 
-            className="w-32 h-32"
+        <View className="mt-4 items-center">
+          <Image
+            source={require('../../assets/KumbhRakshak.png')}
+            className="h-32 w-32"
             resizeMode="contain"
           />
         </View>
@@ -52,27 +48,25 @@ export default function HomeScreen() {
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Emergency Services Section */}
         <View className="p-6">
-          <Text className="text-xl font-bold text-gray-800 mb-4">
-            {t('emergencyServices')}
-          </Text>
+          <Text className="mb-4 text-xl font-bold text-gray-800">{t('emergencyServices')}</Text>
           <View className="grid grid-cols-2 gap-4">
-            <HelpBtn 
-              className="bg-red-50 border-2 border-red-300 shadow-soft" 
+            <HelpBtn
+              className="border-2 border-red-300 bg-red-50 shadow-soft"
               translationKey="emergency"
               iconSize={44}
             />
-            <HelpBtn 
-              className="bg-blue-50 border-2 border-blue-300 shadow-soft" 
+            <HelpBtn
+              className="border-2 border-blue-300 bg-blue-50 shadow-soft"
               translationKey="services"
               iconSize={44}
             />
-            <HelpBtn 
-              className="bg-green-50 border-2 border-green-300 shadow-soft" 
+            <HelpBtn
+              className="border-2 border-green-300 bg-green-50 shadow-soft"
               translationKey="cleanliness"
               iconSize={44}
             />
-            <HelpBtn 
-              className="bg-yellow-50 border-2 border-yellow-300 shadow-soft" 
+            <HelpBtn
+              className="border-2 border-yellow-300 bg-yellow-50 shadow-soft"
               translationKey="emergency"
               iconSize={44}
             />
@@ -81,17 +75,15 @@ export default function HomeScreen() {
 
         {/* Additional Services Section */}
         <View className="px-6 pb-6">
-          <Text className="text-xl font-bold text-gray-800 mb-4">
-            {t('additionalServices')}
-          </Text>
+          <Text className="mb-4 text-xl font-bold text-gray-800">{t('additionalServices')}</Text>
           <View className="grid grid-cols-2 gap-4">
-            <HelpBtn 
-              className="bg-purple-50 border-2 border-purple-300 shadow-soft" 
+            <HelpBtn
+              className="border-2 border-purple-300 bg-purple-50 shadow-soft"
               translationKey="default"
               iconSize={44}
             />
-            <HelpBtn 
-              className="bg-orange-50 border-2 border-orange-300 shadow-soft" 
+            <HelpBtn
+              className="border-2 border-orange-300 bg-orange-50 shadow-soft"
               translationKey="default"
               iconSize={44}
             />
@@ -100,13 +92,8 @@ export default function HomeScreen() {
 
         {/* Debug Button - Remove in production */}
         <View className="px-6 pb-8">
-          <TouchableOpacity 
-            onPress={resetRegistration}
-            className="bg-gray-200 p-3 rounded-lg"
-          >
-            <Text className="text-gray-700 text-center">
-              Reset Registration (Debug)
-            </Text>
+          <TouchableOpacity onPress={resetRegistration} className="rounded-lg bg-gray-200 p-3">
+            <Text className="text-center text-gray-700">Reset Registration (Debug)</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

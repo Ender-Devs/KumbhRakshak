@@ -1,6 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./App.{js,jsx,ts,tsx}', './app/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}','./Components/**/*.{js,jsx,ts,tsx}', './screens/**/*.{js,jsx,ts,tsx}','./Screens/**/*.{js,jsx,ts,tsx}','*/screens/**/*.{js,jsx,ts,tsx}','./*./app/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './App.{js,jsx,ts,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+    './src/**/*.{js,jsx,ts,tsx}',
+    './Components/**/*.{js,jsx,ts,tsx}',
+    './screens/**/*.{js,jsx,ts,tsx}',
+    './Screens/**/*.{js,jsx,ts,tsx}',
+    '*/screens/**/*.{js,jsx,ts,tsx}',
+    './*./app/**/*.{js,jsx,ts,tsx}',
+  ],
 
   presets: [require('nativewind/preset')],
   theme: {
@@ -41,16 +51,16 @@ module.exports = {
           700: '#047857',
           800: '#065f46',
           900: '#064e3b',
-        }
+        },
       },
       fontFamily: {
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'soft': '0 2px 15px -3px rgba(32, 75, 114, 0.1), 0 4px 6px -2px rgba(32, 75, 114, 0.05)',
-        'medium': '0 4px 25px -3px rgba(32, 75, 114, 0.15), 0 8px 10px -6px rgba(32, 75, 114, 0.1)',
-        'strong': '0 10px 40px -3px rgba(32, 75, 114, 0.2), 0 4px 14px -2px rgba(32, 75, 114, 0.1)',
-      }
+        soft: '0 2px 15px -3px rgba(32, 75, 114, 0.1), 0 4px 6px -2px rgba(32, 75, 114, 0.05)',
+        medium: '0 4px 25px -3px rgba(32, 75, 114, 0.15), 0 8px 10px -6px rgba(32, 75, 114, 0.1)',
+        strong: '0 10px 40px -3px rgba(32, 75, 114, 0.2), 0 4px 14px -2px rgba(32, 75, 114, 0.1)',
+      },
     },
   },
   plugins: [],
