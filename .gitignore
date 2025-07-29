@@ -9,10 +9,24 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+test-env.js
+validate-firebase.js
+# Environment variables and sensitive data
+.env
+.env.local
+.env.production
+.env.staging
+*.env
 
+# Firebase config files with sensitive data
+firebase-config.js
+config/firebase-private.js
 
-
-
+# Documentation (to reduce app size)
+./*.md
+OPTIMIZATION_SUMMARY.md
+AI_ASSISTANT_INSTRUCTIONS.md
+/.github
 ios
 android
 

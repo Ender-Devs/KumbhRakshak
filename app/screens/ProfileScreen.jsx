@@ -24,58 +24,79 @@ export default function ProfileScreen() {
   };
 
   const handleLogout = () => {
-    Alert.alert(
-      'Clear Data',
-      'This will clear all your stored data. Are you sure?',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { 
-          text: 'Clear', 
-          style: 'destructive',
-          onPress: async () => {
-            await UserStorage.clearUserData();
-            Alert.alert('Success', 'Data cleared successfully. Restart the app to register again.');
-          }
-        }
-      ]
-    );
+    Alert.alert('Clear Data', 'This will clear all your stored data. Are you sure?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Clear',
+        style: 'destructive',
+        onPress: async () => {
+          await UserStorage.clearUserData();
+          Alert.alert('Success', 'Data cleared successfully. Restart the app to register again.');
+        },
+      },
+    ]);
   };
 
   const profileOptions = [
-    { icon: 'user-pen', title: 'Edit Profile', subtitle: 'Update your personal information', action: () => {} },
-    { icon: 'bell', title: 'Notifications', subtitle: 'Manage your notification preferences', action: () => {} },
-    { icon: 'shield-halved', title: 'Privacy & Security', subtitle: 'Manage your privacy settings', action: () => {} },
-    { icon: 'headset', title: 'Help & Support', subtitle: 'Get help and contact support', action: () => {} },
-    { icon: 'cog', title: 'Settings', subtitle: 'App preferences and configurations', action: () => navigation.navigate('Settings') },
+    {
+      icon: 'user-pen',
+      title: 'Edit Profile',
+      subtitle: 'Update your personal information',
+      action: () => {},
+    },
+    {
+      icon: 'bell',
+      title: 'Notifications',
+      subtitle: 'Manage your notification preferences',
+      action: () => {},
+    },
+    {
+      icon: 'shield-halved',
+      title: 'Privacy & Security',
+      subtitle: 'Manage your privacy settings',
+      action: () => {},
+    },
+    {
+      icon: 'headset',
+      title: 'Help & Support',
+      subtitle: 'Get help and contact support',
+      action: () => {},
+    },
+    {
+      icon: 'cog',
+      title: 'Settings',
+      subtitle: 'App preferences and configurations',
+      action: () => navigation.navigate('Settings'),
+    },
   ];
 
   return (
     <SafeAreaView className="flex-1 bg-gray-50">
       {/* Status bar background replacement */}
-      <View className="bg-gray-50 h-0" />
-      
+      <View className="h-0 bg-gray-50" />
+
       {/* Header */}
-      <View className="bg-white border-b border-gray-200 px-6 py-4">
+      <View className="border-b border-gray-200 bg-white px-6 py-4">
         <Text className="text-3xl font-bold text-gray-800">Profile</Text>
-        <Text className="text-gray-600 mt-1">Manage your account and preferences</Text>
+        <Text className="mt-1 text-gray-600">Manage your account and preferences</Text>
       </View>
 
       <ScrollView className="flex-1">
         {/* User Info Card */}
-        <View className="mx-6 mt-6 bg-white rounded-2xl p-6 border border-gray-200 shadow-soft">
+        <View className="mx-6 mt-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-soft">
           <View className="items-center">
             {/* Avatar */}
-            <View className="w-24 h-24 bg-kumbhblue-600 rounded-full items-center justify-center mb-4 shadow-medium">
+            <View className="mb-4 h-24 w-24 items-center justify-center rounded-full bg-kumbhblue-600 shadow-medium">
               <FontAwesome6 name="user" size={36} color="white" />
             </View>
-            
+
             {/* User Details */}
             {userData ? (
               <View className="items-center">
                 <Text className="text-2xl font-bold text-gray-800">{userData.name}</Text>
-                <Text className="text-lg text-gray-600 mt-1">{userData.phone}</Text>
-                <View className="bg-kumbhgreen-100 px-3 py-1 rounded-full mt-3">
-                  <Text className="text-kumbhgreen-700 text-sm font-medium">Verified User</Text>
+                <Text className="mt-1 text-lg text-gray-600">{userData.phone}</Text>
+                <View className="mt-3 rounded-full bg-kumbhgreen-100 px-3 py-1">
+                  <Text className="text-sm font-medium text-kumbhgreen-700">Verified User</Text>
                 </View>
               </View>
             ) : (
@@ -84,46 +105,45 @@ export default function ProfileScreen() {
               </View>
             )}
           </View>
-          
+
           {/* Stats Row */}
-          <View className="flex-row justify-around mt-6 pt-6 border-t border-gray-200">
+          <View className="mt-6 flex-row justify-around border-t border-gray-200 pt-6">
             <View className="items-center">
               <Text className="text-2xl font-bold text-kumbhblue-600">0</Text>
-              <Text className="text-gray-600 text-sm">Reports</Text>
+              <Text className="text-sm text-gray-600">Reports</Text>
             </View>
             <View className="items-center">
               <Text className="text-2xl font-bold text-kumbhgreen-600">5</Text>
-              <Text className="text-gray-600 text-sm">Points</Text>
+              <Text className="text-sm text-gray-600">Points</Text>
             </View>
             <View className="items-center">
               <Text className="text-2xl font-bold text-kumbhgold-600">New</Text>
-              <Text className="text-gray-600 text-sm">Member</Text>
+              <Text className="text-sm text-gray-600">Member</Text>
             </View>
           </View>
         </View>
 
         {/* Profile Options */}
         <View className="mx-6 mt-6">
-          <Text className="text-xl font-bold text-gray-800 mb-4">Account Options</Text>
-          
+          <Text className="mb-4 text-xl font-bold text-gray-800">Account Options</Text>
+
           <View className="space-y-3">
             {profileOptions.map((option, index) => (
-              <TouchableOpacity 
+              <TouchableOpacity
                 key={index}
                 onPress={option.action}
-                className="bg-white rounded-2xl p-4 border border-gray-200 shadow-soft"
-                activeOpacity={0.8}
-              >
+                className="rounded-2xl border border-gray-200 bg-white p-4 shadow-soft"
+                activeOpacity={0.8}>
                 <View className="flex-row items-center">
-                  <View className="w-12 h-12 bg-kumbhblue-50 rounded-xl items-center justify-center">
+                  <View className="h-12 w-12 items-center justify-center rounded-xl bg-kumbhblue-50">
                     <FontAwesome6 name={option.icon} size={20} color="#204B72" />
                   </View>
-                  
-                  <View className="flex-1 ml-4">
+
+                  <View className="ml-4 flex-1">
                     <Text className="text-lg font-semibold text-gray-800">{option.title}</Text>
-                    <Text className="text-gray-600 text-sm mt-1">{option.subtitle}</Text>
+                    <Text className="mt-1 text-sm text-gray-600">{option.subtitle}</Text>
                   </View>
-                  
+
                   <FontAwesome6 name="chevron-right" size={16} color="#9CA3AF" />
                 </View>
               </TouchableOpacity>
@@ -132,34 +152,33 @@ export default function ProfileScreen() {
         </View>
 
         {/* App Info */}
-        <View className="mx-6 mt-6 mb-6">
-          <View className="bg-white rounded-2xl p-6 border border-gray-200 shadow-soft">
-            <Text className="text-lg font-bold text-gray-800 mb-4">App Information</Text>
-            
+        <View className="mx-6 mb-6 mt-6">
+          <View className="rounded-2xl border border-gray-200 bg-white p-6 shadow-soft">
+            <Text className="mb-4 text-lg font-bold text-gray-800">App Information</Text>
+
             <View className="space-y-3">
               <View className="flex-row justify-between">
                 <Text className="text-gray-600">Version</Text>
-                <Text className="text-gray-800 font-medium">1.0.0</Text>
+                <Text className="font-medium text-gray-800">1.0.0</Text>
               </View>
               <View className="flex-row justify-between">
                 <Text className="text-gray-600">Last Updated</Text>
-                <Text className="text-gray-800 font-medium">July 2025</Text>
+                <Text className="font-medium text-gray-800">July 2025</Text>
               </View>
               <View className="flex-row justify-between">
                 <Text className="text-gray-600">Build</Text>
-                <Text className="text-gray-800 font-medium">1.0.0 (1)</Text>
+                <Text className="font-medium text-gray-800">1.0.0 (1)</Text>
               </View>
             </View>
 
             {/* Debug Clear Data Button */}
             {__DEV__ && (
-              <TouchableOpacity 
+              <TouchableOpacity
                 onPress={handleLogout}
-                className="mt-6 pt-4 border-t border-gray-200"
-              >
+                className="mt-6 border-t border-gray-200 pt-4">
                 <View className="flex-row items-center justify-center">
                   <FontAwesome6 name="trash" size={16} color="#DC2626" />
-                  <Text className="text-red-600 font-medium ml-2">Clear All Data (Debug)</Text>
+                  <Text className="ml-2 font-medium text-red-600">Clear All Data (Debug)</Text>
                 </View>
               </TouchableOpacity>
             )}
