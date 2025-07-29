@@ -93,9 +93,19 @@ We’re open to collaboration — feel free to raise issues or pull requests.
 
 ---
 
-## 📄 License
 
-MIT License — use, share, improve!
+## ⚠️ Usage Rights – Hackathon Only
+
+This project **KumbhRakshak** is developed exclusively for the purpose of submission and evaluation in the **Simhastha Mahakumbh 2028 Hackathon**.
+All code, content, and concepts are intended for review and potential implementation by **hackathon organizers only**.  
+
+> 🔒 **Important:**  
+> - This codebase and concept is intended **only for the organizing committee and affiliated evaluators**.  
+> - It is **not licensed for public, commercial, or third-party use** without explicit permission from the team.  
+> - Any reproduction, distribution, or modification of this project outside of this hackathon context is **not allowed**.
+
+If you are a member of the hackathon committee or jury and would like to explore future use or collaboration, feel free to contact us.
+
 
 ---
 
